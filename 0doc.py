@@ -25,8 +25,8 @@ def generate_response(file_upload,openai_api_key,query_text):
     elif file_type == "application/pdf":
         # Process the content of PDF file
         pdf_reader = PyPDF2.PdfReader(BytesIO(document))
-        text =str(text)
-        for page_num in range(pdf_reader.numPages):
+        text =""
+        for page_num in range(len(pdf_reader.numPages)):
             page = pdf_reader.getPage(page_num)
             text += page.extract_text()
         st.write("Text content:")
